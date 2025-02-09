@@ -18,7 +18,7 @@
 ### **📥 Installation :**  
 1️⃣ Clone the repo :  
 ```bash
-git clone https://github.com/nathan79-c/My_Favorites_Quotes/favorites-quotes.git
+git clone https://github.com/nathan79-c/My_Favorites_Quotes.git
 ```  
 2️⃣ Open the project in **Android Studio**  
 3️⃣ Run the app on an emulator or real device  
