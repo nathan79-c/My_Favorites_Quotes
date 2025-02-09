@@ -1,4 +1,4 @@
-package com.example.myfavoritesquotes
+package com.example.myfavoritesquotes.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
