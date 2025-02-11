@@ -1,4 +1,4 @@
-package com.example.myfavoritesquotes.data.local.dao
+package com.example.myfavoritesquotes.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

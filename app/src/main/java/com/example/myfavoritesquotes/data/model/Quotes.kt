@@ -1,10 +1,10 @@
 package com.example.myfavoritesquotes.data.model
 
-import com.example.myfavoritesquotes.data.local.dao.EntityQuotes
+import com.example.myfavoritesquotes.data.local.entity.EntityQuotes
 
 data class Quotes(
-    var quotes :String,
-    var auteur : String,
+    val quotes :String,
+    val auteur : String,
 
 )
 
