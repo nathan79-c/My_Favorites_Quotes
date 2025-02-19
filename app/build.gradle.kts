@@ -70,7 +70,9 @@ dependencies {
     implementation (libs.glance.material3)
 
     // Koin for Android
-    implementation(libs.koin.android)
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
+
 
     // Navigation
 
