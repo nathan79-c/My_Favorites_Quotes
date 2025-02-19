@@ -72,6 +72,7 @@ dependencies {
     // Koin for Android
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.core)
+    implementation(libs.koin.androidx.startup)
 
 
     // Navigation
