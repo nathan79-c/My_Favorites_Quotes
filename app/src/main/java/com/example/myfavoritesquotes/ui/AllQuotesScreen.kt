@@ -1,6 +1,7 @@
 package com.example.myfavoritesquotes.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,10 +11,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,18 +32,30 @@ import androidx.compose.ui.unit.dp
 import com.example.myfavoritesquotes.data.model.QuotesModel
 
 @Composable
-fun AllQuotes(modifier: Modifier = Modifier, quotes: List<QuotesModel>) {
-    LazyColumn(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        items(quotes) { quote ->
-            CardQuotes(quotes = quote)
+fun AllQuotes(quotes: List<QuotesModel>) {
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { /* Handle click */ },
+                containerColor = MaterialTheme.colorScheme.primary
+            ) {
+                Icon(Icons.Filled.Create, "Add Quote")
+            }
+        }
+    ) { innerPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            items(quotes) { quote ->
+                CardQuotes(quotes = quote)
+            }
         }
     }
 }
+
 
 @Composable
 fun CardQuotes(modifier: Modifier = Modifier, quotes: QuotesModel) {
@@ -66,6 +85,15 @@ fun CardQuotes(modifier: Modifier = Modifier, quotes: QuotesModel) {
                     .padding(end = 8.dp)
             )
         }
+    }
+}
+
+@Composable
+fun ButtonFloating(modifier: Modifier,onClick: () -> Unit) {
+    FloatingActionButton(
+        onClick = { onClick() },
+    ) {
+        Icon(Icons.Filled.Create, "Floating action button.")
     }
 }
 
