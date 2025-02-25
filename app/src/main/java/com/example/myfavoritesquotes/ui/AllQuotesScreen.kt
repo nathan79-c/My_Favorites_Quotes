@@ -14,11 +14,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -50,7 +52,7 @@ fun AllQuotes(quotes: List<QuotesModel>) {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(quotes) { quote ->
-                CardQuotes(quotes = quote)
+                CardQuotes(quotes = quote, onEditClick = {})
             }
         }
     }
@@ -58,32 +60,53 @@ fun AllQuotes(quotes: List<QuotesModel>) {
 
 
 @Composable
-fun CardQuotes(modifier: Modifier = Modifier, quotes: QuotesModel) {
+fun CardQuotes(
+    modifier: Modifier = Modifier,
+    quotes: QuotesModel,
+    onEditClick: () -> Unit // Add click handler
+) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 8.dp)
     ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = quotes.quotes,
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "- ${quotes.auteur}",
-                textAlign = TextAlign.End,
-                style = MaterialTheme.typography.bodyMedium.copy(fontStyle = FontStyle.Italic),
+        Box(modifier = Modifier.fillMaxWidth()) {
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(end = 8.dp)
-            )
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = quotes.quotes,
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "- ${quotes.auteur}",
+                    textAlign = TextAlign.End,
+                    style = MaterialTheme.typography.bodyMedium.copy(fontStyle = FontStyle.Italic),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(end = 8.dp)
+                )
+            }
+
+            // Edit icon positioned at top-right
+            IconButton(
+                onClick = onEditClick,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = "Edit Quote",
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
         }
     }
 }
@@ -104,7 +127,7 @@ fun PreviewCardQuotes() {
         quotes = QuotesModel(
             quotes = "The only way to do great work is to love what you do.",
             auteur = "Steve Jobs"
-        )
+        ), onEditClick = {}
     )
 }
 
