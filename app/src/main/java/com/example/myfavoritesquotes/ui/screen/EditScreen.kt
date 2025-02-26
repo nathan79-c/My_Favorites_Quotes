@@ -1,4 +1,4 @@
-package com.example.myfavoritesquotes.ui
+package com.example.myfavoritesquotes.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
