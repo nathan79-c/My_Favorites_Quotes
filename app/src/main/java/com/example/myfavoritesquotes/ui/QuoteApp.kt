@@ -1,11 +1,20 @@
 package com.example.myfavoritesquotes.ui
 
-import kotlinx.serialization.Serializable
-sealed class  Screen{
-@Serializable
- data object mainScreen:Screen
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+
+@Composable
+fun QuoteApp(){
+
+    val navController = rememberNavController()
 
 
-    @Serializable
-    data object  addScreen:Screen
+    NavHost(
+        navController = navController,
+        startDestination = ""
+    ) {
+
+    }
+
 }
