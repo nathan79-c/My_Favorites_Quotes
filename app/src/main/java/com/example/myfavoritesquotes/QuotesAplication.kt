@@ -9,7 +9,7 @@ import org.koin.core.context.GlobalContext.startKoin
 
 
 class QuotesAplication  : Application()  {
-    override fun onCreate() {
+   override fun onCreate() {
         super.onCreate()
 
         startKoin{
