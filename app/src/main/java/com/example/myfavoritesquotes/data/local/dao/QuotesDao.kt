@@ -26,4 +26,8 @@ interface QuotesDao {
     // Delete a quote by its ID
     @Query("DELETE FROM quotes WHERE id = :id")
     suspend fun deleteQuoteById(id: Long)
+
+    // GET RADOM QUOTES
+    @Query("SELECT * FROM quotes ORDER BY RANDOM() LIMIT 1 ")
+    suspend fun  getQuote():EntityQuotes
 }

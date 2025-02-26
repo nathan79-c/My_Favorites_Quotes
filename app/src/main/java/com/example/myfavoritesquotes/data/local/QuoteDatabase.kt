@@ -11,14 +11,23 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 @Database(entities = [EntityQuotes::class], version = 1, exportSchema = false)
 abstract class QuoteDatabase: RoomDatabase(){
             abstract fun QuotesDao():QuotesDao
+
+            companion object{
+                @Volatile private var INSTANCE:QuoteDatabase? =null
+
+                fun getInstance(@ApplicationContext context: Context): QuoteDatabase {
+                    return INSTANCE?:synchronized(this){
+                        Room.databaseBuilder(
+                            context.applicationContext,
+                            QuoteDatabase::class.java,
+                            "movie_database"
+                        ).build()
+
+                    }
+
+                }
+            }
 }
 
-fun provideRoomDatabase(@ApplicationContext context: Context): QuoteDatabase {
-    return Room.databaseBuilder(
-        context.applicationContext,
-        QuoteDatabase::class.java,
-        "movie_database"
-    ).build()
-}
 
-fun provideMovieDao(movieDatabase: QuoteDatabase) = movieDatabase.QuotesDao()
+
