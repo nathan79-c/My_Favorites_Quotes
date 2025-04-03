@@ -4,19 +4,20 @@ import android.app.Application
 import com.example.myfavoritesquotes.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.androix.startup.KoinStartup
 import org.koin.core.context.GlobalContext.startKoin
+import org.koin.dsl.KoinConfiguration
 
 
-
-class QuotesAplication  : Application()  {
+class QuotesAplication  : Application() , KoinStartup {
+    override fun onKoinStartup()= KoinConfiguration {
+        androidContext(this@QuotesAplication)
+        modules(appModule)
+    }
    override fun onCreate() {
         super.onCreate()
 
-        startKoin{
-            androidLogger()
-            androidContext(this@QuotesAplication)
-            modules(appModule)
-        }
 
     }
 }
+

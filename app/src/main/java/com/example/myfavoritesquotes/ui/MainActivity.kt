@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myfavoritesquotes.data.model.QuotesModel
 import com.example.myfavoritesquotes.ui.screen.AllQuotes
@@ -16,7 +17,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyFavoritesQuotesTheme {
-                    AllQuotes(testApp)
+                    AllQuotes(
+                        onClick = { },
+                        quotes = testApp, modifier =
+                            Modifier
+                    )
             }
         }
     }

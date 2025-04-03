@@ -2,8 +2,15 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("com.google.devtools.ksp")
+
+
+    id("com.google.devtools.ksp") version "2.1.10-1.0.31"
     id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
+
+    // Kotlin serialization plugin for type safe routes and navigation arguments
+
+    kotlin("plugin.serialization") version "2.1.20"
 }
 
 android {
@@ -74,15 +81,26 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.androidx.startup)
 
+    implementation("io.insert-koin:koin-android:3.5.0")
+    implementation ("io.insert-koin:koin-androidx-compose:3.5.0")
+
+
+
 
     // Navigation
 
     implementation(libs.androidx.navigation.compose)
+    // JSON serialization library, works with the Kotlin serialization plugin dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
 
     // Dagger hilt
 
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+
+    // statup
+    implementation("androidx.startup:startup-runtime:1.1.1")
+
 
     // Room dependencies
 
@@ -152,4 +170,11 @@ dependencies {
 
     // optional - Test helpers for Lifecycle runtime
     testImplementation (libs.androidx.lifecycle.runtime.testing)
+}
+kapt {
+    correctErrorTypes = true
+}
+// Compile time check
+ksp {
+arg("KOIN_CONFIG_CHECK","true")
 }

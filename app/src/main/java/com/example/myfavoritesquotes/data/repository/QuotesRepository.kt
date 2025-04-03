@@ -9,7 +9,7 @@ class QuotesRepository(private val quotesDao: QuotesDao) {
 
     suspend fun getAllQuotes():List<QuotesModel>{
         return try {
-            val allQuotes = quotesDao.getAllQuotes()
+            var allQuotes = quotesDao.getAllQuotes()
 
                 allQuotes.map{ QuotesMapper.toModel(it) }
 
@@ -23,7 +23,7 @@ class QuotesRepository(private val quotesDao: QuotesDao) {
     suspend fun getRandomQuote():QuotesModel?{
       return  try {
             var quotes = quotesDao.getQuote()
-          quotes?.let { QuotesMapper.toModel(it) }
+          quotes.let { QuotesMapper.toModel(it) }
         }catch (e:Exception){
             Log.e("erreur","")
           null

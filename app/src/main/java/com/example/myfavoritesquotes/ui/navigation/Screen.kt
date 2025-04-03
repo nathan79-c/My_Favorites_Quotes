@@ -1,11 +1,14 @@
 package com.example.myfavoritesquotes.ui.navigation
 
 import kotlinx.serialization.Serializable
-sealed class  Screen{
+
+
+sealed interface  Screen{
     @Serializable
-    data object mainScreen:Screen
+    data object MainScreen:Screen
 
 
     @Serializable
-    data object  addScreen:Screen
+    data object  AddScreen:Screen
 }
+

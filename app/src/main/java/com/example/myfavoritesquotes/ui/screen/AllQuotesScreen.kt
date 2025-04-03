@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.example.myfavoritesquotes.data.model.QuotesModel
 
 @Composable
-fun AllQuotes(quotes: List<QuotesModel>) {
+fun AllQuotes(modifier: Modifier, quotes: List<QuotesModel>, onClick: () -> Unit) {
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -135,7 +135,7 @@ fun PreviewAllQuotes() {
         QuotesModel("Do what you can, with what you have, where you are.", "Theodore Roosevelt"),
         QuotesModel("In the middle of every difficulty lies opportunity.", "Albert Einstein")
     )
-    AllQuotes(quotes = sampleQuotes)
+  //  AllQuotes(quotes = sampleQuotes)
 }
 
 
