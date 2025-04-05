@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myfavoritesquotes.data.model.QuotesModel
 import com.example.myfavoritesquotes.ui.screen.AllQuotes
+import com.example.myfavoritesquotes.ui.screen.QuotesElement
 import com.example.myfavoritesquotes.ui.theme.MyFavoritesQuotesTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,11 +18,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyFavoritesQuotesTheme {
-                    AllQuotes(
+                  /*  AllQuotes(
                         onClick = { },
                         quotes = testApp, modifier =
                             Modifier
-                    )
+                    ) */
+                QuotesElement()
             }
         }
     }

@@ -18,7 +18,7 @@ fun QuoteApp(){
         startDestination = ""
     ) {
         composable<Screen.MainScreen> {
-          //  AllQuotes()
+          // AllQuotes()
         }
     }
 
