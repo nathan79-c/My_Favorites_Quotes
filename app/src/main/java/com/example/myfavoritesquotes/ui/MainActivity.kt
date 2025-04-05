@@ -18,12 +18,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyFavoritesQuotesTheme {
-                  /*  AllQuotes(
+                  AllQuotes(
                         onClick = { },
                         quotes = testApp, modifier =
                             Modifier
-                    ) */
-                QuotesElement()
+                    )
+
             }
         }
     }

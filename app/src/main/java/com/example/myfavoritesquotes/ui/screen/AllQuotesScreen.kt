@@ -78,7 +78,7 @@ fun CardQuotes(
                     text = quotes.quotes,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth().padding(24.dp)
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
@@ -87,7 +87,7 @@ fun CardQuotes(
                     style = MaterialTheme.typography.bodyMedium.copy(fontStyle = FontStyle.Italic),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(end = 8.dp)
+                        .padding(8.dp)
                 )
             }
 
@@ -96,6 +96,7 @@ fun CardQuotes(
                 onClick = onEditClick,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
+                    .padding(start = 48.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.Edit,
