@@ -9,7 +9,7 @@ class QuotesRepository(private val quotesDao: QuotesDao) {
 
     suspend fun getAllQuotes():List<QuotesModel>{
         return try {
-            var allQuotes = quotesDao.getAllQuotes()
+                var allQuotes = quotesDao.getAllQuotes()
 
                 allQuotes.map{ QuotesMapper.toModel(it) }
 
