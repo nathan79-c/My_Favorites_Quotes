@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myfavoritesquotes.ui.navigation.Screen
 import com.example.myfavoritesquotes.ui.screen.AllQuotes
+import com.example.myfavoritesquotes.ui.screen.QuotesElement
 import com.example.myfavoritesquotes.ui.screen.QuotesScreen
 import com.example.myfavoritesquotes.ui.viewModel.QuoteViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -26,7 +27,11 @@ fun QuoteApp(){
             startDestination = Screen.MainScreen
         ) {
             composable<Screen.MainScreen> {
-                QuotesScreen(Modifier, quoteViewModel, onNavigateToCreate = {})
+                QuotesScreen(Modifier, quoteViewModel, onNavigateToCreate = {navController.navigate(
+                    Screen.AddScreen)})
+            }
+            composable<Screen.AddScreen> {
+                QuotesElement()
             }
         }
     }
