@@ -17,14 +17,21 @@ class QuoteViewModel(private val quotesRepository:QuotesRepository):ViewModel() 
         getAllQuotes()
     }
 
-    fun getAllQuotes(){
+    fun getAllQuotes() {
         viewModelScope.launch {
             _uiState.value = QuoteUiState.Loading
-           val result = quotesRepository.getAllQuotes()
-            _uiState.value = QuoteUiState.Succes(result)
-            _uiState.value = QuoteUiState.Error("Error of loading")
-        }
+            try {
+                val result = quotesRepository.getAllQuotes()
 
+                if (result.isEmpty()) {
+                    _uiState.value = QuoteUiState.Empty
+                } else {
+                    _uiState.value = QuoteUiState.Success(result)
+                }
+            } catch (e: Exception) {
+                _uiState.value = QuoteUiState.Error("Error loading quotes: ${e.message}")
+            }
+        }
     }
     fun glanceNewQuotes(){
 
@@ -32,11 +39,10 @@ class QuoteViewModel(private val quotesRepository:QuotesRepository):ViewModel() 
 
 }
 
-sealed class QuoteUiState{
-    object Loading:QuoteUiState()
-    data class  Error(val message:String):QuoteUiState()
-    data class Succes(
-        val Quotes:List<QuotesModel>,
-        val selectQuote:QuotesModel?= null
-    ):QuoteUiState()
+// États possibles
+sealed class QuoteUiState {
+    object Loading : QuoteUiState()
+    object Empty : QuoteUiState() // Nouvel état pour données vides
+    data class Success(val quotes: List<QuotesModel>) : QuoteUiState()
+    data class Error(val message: String) : QuoteUiState()
 }

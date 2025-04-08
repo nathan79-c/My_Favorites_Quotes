@@ -7,18 +7,14 @@ import com.example.myfavoritesquotes.data.model.QuotesModel
 
 class QuotesRepository(private val quotesDao: QuotesDao) {
 
-    suspend fun getAllQuotes():List<QuotesModel>{
+    suspend fun getAllQuotes(): List<QuotesModel> { // Retirez le nullable si possible
         return try {
-                var allQuotes = quotesDao.getAllQuotes()
-
-                allQuotes.map{ QuotesMapper.toModel(it) }
-
-
-        }catch (e:Exception){
-            Log.e("pas de donnees", "donnnes introuvables")
+            quotesDao.getAllQuotes()
+                .map { QuotesMapper.toModel(it) } // Utilisez mapNotNull pour filtrer les nulls
+        } catch (e: Exception) {
+            Log.e("QuotesRepository", "Error getting quotes", e)
             emptyList()
         }
-
     }
     suspend fun getRandomQuote():QuotesModel?{
       return  try {
