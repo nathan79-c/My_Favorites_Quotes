@@ -21,11 +21,11 @@ interface QuotesDao {
 
     // Get a quote by its ID
     @Query("SELECT * FROM quotes WHERE id = :id LIMIT 1")
-    suspend fun getQuoteById(id: Long): EntityQuotes?
+    suspend fun getQuoteById(id: Int): EntityQuotes?
 
     // Delete a quote by its ID
     @Query("DELETE FROM quotes WHERE id = :id")
-    suspend fun deleteQuoteById(id: Long)
+    suspend fun deleteQuoteById(id: Int)
 
     // GET RADOM QUOTES
     @Query("SELECT * FROM quotes ORDER BY RANDOM() LIMIT 1 ")

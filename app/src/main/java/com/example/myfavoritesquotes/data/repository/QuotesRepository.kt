@@ -35,6 +35,14 @@ class QuotesRepository(private val quotesDao: QuotesDao) {
         quotesDao.insertQuote(quote)
 
     }
-
+    suspend fun getQuoteById(quoteId: Int): QuotesModel?{
+        return  try {
+            var quotes = quotesDao.getQuoteById(quoteId)
+            quotes.let{ QuotesMapper.toModel(it) }
+        }catch (e: Exception){
+            Log.e("Erreur","")
+            null
+        }
+    }
 
 }

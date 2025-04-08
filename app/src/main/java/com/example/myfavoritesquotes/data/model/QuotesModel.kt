@@ -11,9 +11,9 @@ data class QuotesModel(
 object QuotesMapper {
 
     // Convert EntityQuotes to Quotes
-    fun toModel(entityQuotes: EntityQuotes): QuotesModel {
+    fun toModel(entityQuotes: EntityQuotes?): QuotesModel {
         return QuotesModel(
-            quotes = entityQuotes.quotes,
+            quotes = entityQuotes!!.quotes,
             auteur = entityQuotes.auteur
         )
     }
