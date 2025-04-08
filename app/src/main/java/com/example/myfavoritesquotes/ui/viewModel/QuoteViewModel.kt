@@ -48,9 +48,10 @@ class QuoteViewModel(private val quotesRepository:QuotesRepository):ViewModel() 
     private val _selectedQuote = MutableStateFlow<QuotesModel?>(null)
     val selectedQuote: StateFlow<QuotesModel?> = _selectedQuote.asStateFlow()
 
-    fun prepareUpdate(quote: QuotesModel) {
-        _selectedQuote.value = quote
-        // Naviguer vers un écran d'édition
+    fun prepareUpdate(quoteId: Int) {
+        viewModelScope.launch {
+            _selectedQuote.value = quotesRepository.getQuoteById(quoteId)
+        }
     }
 
     suspend fun updateQuote(updatedQuote: QuotesModel) {

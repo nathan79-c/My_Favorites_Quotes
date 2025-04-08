@@ -24,16 +24,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.myfavoritesquotes.data.model.QuotesModel
 
+// 1. Modifier le composable QuotesElement
 @Composable
-fun QuotesElement(modifier: Modifier = Modifier) {
-    var auteur by remember { mutableStateOf("") }
-    var quotes by remember { mutableStateOf("") }
+fun QuotesElement(
+    modifier: Modifier = Modifier,
+    quote: QuotesModel? = null,
+    onSave: (QuotesModel) -> Unit
+) {
+    var auteur by remember { mutableStateOf(quote?.auteur ?: "") }
+    var content by remember { mutableStateOf(quote?.quotes ?: "") }
 
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top= 120.dp, start = 16.dp, end = 16.dp),
+            .padding(top = 120.dp, start = 16.dp, end = 16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
         shape = RoundedCornerShape(12.dp)
     ) {
@@ -45,7 +51,7 @@ fun QuotesElement(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Create a New Quote",
+                text = if (quote == null) "Create a New Quote" else "Edit Quote",
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold
             )
@@ -59,8 +65,8 @@ fun QuotesElement(modifier: Modifier = Modifier) {
             )
 
             OutlinedTextField(
-                value = quotes,
-                onValueChange = { quotes = it },
+                value = content,
+                onValueChange = { content = it },
                 label = { Text("Quote") },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -69,7 +75,13 @@ fun QuotesElement(modifier: Modifier = Modifier) {
             )
 
             ElevatedButton(
-                onClick = { /* Handle save action */ },
+                onClick = {
+                    val newQuote = QuotesModel(
+                        auteur = auteur,
+                        quotes = content
+                    )
+                    onSave(newQuote)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp)
@@ -80,9 +92,17 @@ fun QuotesElement(modifier: Modifier = Modifier) {
     }
 }
 
+
+
+
+
+
+
+
+
 @Preview(showBackground = true)
 @Composable
 fun QuotesElementPreview() {
-    QuotesElement(modifier = Modifier.fillMaxSize())
+  //  QuotesElement(modifier = Modifier.fillMaxSize())
 }
 
