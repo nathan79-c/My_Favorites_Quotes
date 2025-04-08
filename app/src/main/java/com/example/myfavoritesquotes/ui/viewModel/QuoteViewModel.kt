@@ -33,8 +33,16 @@ class QuoteViewModel(private val quotesRepository:QuotesRepository):ViewModel() 
             }
         }
     }
-    fun glanceNewQuotes(){
-
+    fun createQuote(quotesModel: QuotesModel) {
+        viewModelScope.launch {
+            try {
+                _uiState.value = QuoteUiState.Creating
+                quotesRepository.createQuote(quotesModel)
+                getAllQuotes() // Rafraîchit la liste après création
+            } catch (e: Exception) {
+                _uiState.value = QuoteUiState.Error("Erreur de création : ${e.message}")
+            }
+        }
     }
 
 }
@@ -42,6 +50,7 @@ class QuoteViewModel(private val quotesRepository:QuotesRepository):ViewModel() 
 // États possibles
 sealed class QuoteUiState {
     object Loading : QuoteUiState()
+    object Creating : QuoteUiState()
     object Empty : QuoteUiState() // Nouvel état pour données vides
     data class Success(val quotes: List<QuotesModel>) : QuoteUiState()
     data class Error(val message: String) : QuoteUiState()

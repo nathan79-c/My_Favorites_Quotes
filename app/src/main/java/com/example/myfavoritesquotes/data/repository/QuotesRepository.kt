@@ -26,7 +26,7 @@ class QuotesRepository(private val quotesDao: QuotesDao) {
         }
 
     }
-    suspend  fun createQuotes(quotesModel: QuotesModel){
+    suspend  fun createQuote(quotesModel: QuotesModel){
         var quote = quotesModel.let { QuotesMapper.toEntity(it) }
         quotesDao.insertQuote(quote)
 
