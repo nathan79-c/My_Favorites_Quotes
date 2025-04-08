@@ -1,9 +1,11 @@
 package com.example.myfavoritesquotes.data.local.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.RewriteQueriesToDropUnusedColumns
+import androidx.room.Update
 import com.example.myfavoritesquotes.data.local.entity.EntityQuotes
 
 
@@ -15,6 +17,12 @@ interface QuotesDao {
     @Insert
     suspend fun insertQuote(quote: EntityQuotes)
 
+    @Update
+    suspend fun upadateQuote(quote: EntityQuotes)
+
+    @Delete
+    suspend fun deleteQuote(quote: EntityQuotes)
+
     // Get all quotes
     @Query("SELECT * FROM quotes")
     suspend fun getAllQuotes(): List<EntityQuotes>
@@ -23,9 +31,6 @@ interface QuotesDao {
     @Query("SELECT * FROM quotes WHERE id = :id LIMIT 1")
     suspend fun getQuoteById(id: Int): EntityQuotes?
 
-    // Delete a quote by its ID
-    @Query("DELETE FROM quotes WHERE id = :id")
-    suspend fun deleteQuoteById(id: Int)
 
     // GET RADOM QUOTES
     @Query("SELECT * FROM quotes ORDER BY RANDOM() LIMIT 1 ")

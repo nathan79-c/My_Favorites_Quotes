@@ -45,6 +45,23 @@ class QuoteViewModel(private val quotesRepository:QuotesRepository):ViewModel() 
         }
     }
 
+    private val _selectedQuote = MutableStateFlow<QuotesModel?>(null)
+    val selectedQuote: StateFlow<QuotesModel?> = _selectedQuote.asStateFlow()
+
+    fun prepareUpdate(quote: QuotesModel) {
+        _selectedQuote.value = quote
+        // Naviguer vers un écran d'édition
+    }
+
+    suspend fun updateQuote(updatedQuote: QuotesModel) {
+        try {
+            quotesRepository.updateQuote(updatedQuote)
+            getAllQuotes() // Rafraîchit la liste
+        } catch (e: Exception) {
+            _uiState.value = QuoteUiState.Error("Erreur de mise à jour")
+        }
+    }
+
 }
 
 // États possibles

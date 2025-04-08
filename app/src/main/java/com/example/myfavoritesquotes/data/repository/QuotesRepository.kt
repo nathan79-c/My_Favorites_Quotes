@@ -41,4 +41,9 @@ class QuotesRepository(private val quotesDao: QuotesDao) {
         }
     }
 
+    suspend fun  updateQuote(updatedQuote: QuotesModel){
+        var quote = updatedQuote.let { QuotesMapper.toEntity(it) }
+        quotesDao.upadateQuote(quote)
+
+    }
 }
