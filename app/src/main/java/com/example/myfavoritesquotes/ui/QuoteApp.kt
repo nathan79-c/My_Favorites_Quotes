@@ -30,10 +30,15 @@ fun QuoteApp(){
         ) {
             composable<Screen.MainScreen> {
                 QuotesScreen(Modifier, quoteViewModel, onNavigateToCreate = {
+                    quoteViewModel.clearSelectedQuote()
                     navController.navigate(
                         Screen.AddScreen
                     )
-                })
+                },
+                    onNavigateToEdit = { quoteId ->
+                        quoteViewModel.prepareUpdate(quoteId)
+                        navController.navigate(Screen.AddScreen)
+                    })
             }
             composable<Screen.AddScreen> {
                 QuotesElement(

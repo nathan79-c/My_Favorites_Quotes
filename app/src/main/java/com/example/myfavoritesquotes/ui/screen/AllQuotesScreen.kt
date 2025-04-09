@@ -38,7 +38,8 @@ import com.example.myfavoritesquotes.ui.viewModel.QuoteViewModel
 fun QuotesScreen(
     modifier: Modifier = Modifier,
     viewModel: QuoteViewModel = viewModel(),
-    onNavigateToCreate: () -> Unit
+    onNavigateToCreate: () -> Unit,
+    onNavigateToEdit: (Long)-> Unit
 ) {
     val uiState = viewModel.uiState.collectAsState().value
 
@@ -61,7 +62,8 @@ fun QuotesScreen(
                 uiState = state,
                 onEditClick = {  quote ->
                     // Gérer l'édition
-                    viewModel.prepareUpdate(quote.id)
+
+                    onNavigateToEdit(quote.id)
                 },
                 onCreateClick = onNavigateToCreate
             )
