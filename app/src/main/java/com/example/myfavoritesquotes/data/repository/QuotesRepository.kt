@@ -21,7 +21,7 @@ class QuotesRepository(private val quotesDao: QuotesDao) {
             var quotes = quotesDao.getQuote()
           quotes.let { QuotesMapper.toModel(it) }
         }catch (e:Exception){
-            Log.e("erreur","")
+            Log.e("erreur","${e.message}")
           null
         }
 
@@ -36,7 +36,7 @@ class QuotesRepository(private val quotesDao: QuotesDao) {
             var quotes = quotesDao.getQuoteById(quoteId)
             quotes.let{ QuotesMapper.toModel(it) }
         }catch (e: Exception){
-            Log.e("Erreur","")
+            Log.e("Erreur","${e.message}")
             null
         }
     }

@@ -61,7 +61,7 @@ class QuoteViewModel(private val quotesRepository: QuotesRepository) : ViewModel
              quotesRepository.updateQuote(updatedQuote)
              getAllQuotes()
          } catch (e: Exception) {
-             _uiState.value = QuoteUiState.Error("Erreur de mise à jour")
+             _uiState.value = QuoteUiState.Error("Erreur de mise à jour ${e.message}")
          }
      }
 

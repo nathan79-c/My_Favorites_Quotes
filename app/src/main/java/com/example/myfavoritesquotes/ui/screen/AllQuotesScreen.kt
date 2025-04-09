@@ -214,12 +214,7 @@ fun PreviewCardQuotes() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewAllQuotes() {
-    val sampleQuotes = listOf(
-        QuotesModel("The only limit to our realization of tomorrow is our doubts of today.", "Franklin D. Roosevelt"),
-        QuotesModel("Do what you can, with what you have, where you are.", "Theodore Roosevelt"),
-        QuotesModel("In the middle of every difficulty lies opportunity.", "Albert Einstein")
-    )
-  //  AllQuotes(quotes = sampleQuotes)
+
 }
 
 
