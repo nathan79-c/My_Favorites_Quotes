@@ -59,9 +59,9 @@ fun QuotesScreen(
             AllQuotes(
                 modifier = modifier,
                 uiState = state,
-                onEditClick = { quote ->
+                onEditClick = {  quote ->
                     // Gérer l'édition
-                    viewModel.prepareUpdate(quote)
+                    viewModel.prepareUpdate(quote.id)
                 },
                 onCreateClick = onNavigateToCreate
             )

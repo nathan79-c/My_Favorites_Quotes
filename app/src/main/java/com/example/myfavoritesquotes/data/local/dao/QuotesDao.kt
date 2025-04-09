@@ -29,7 +29,7 @@ interface QuotesDao {
 
     // Get a quote by its ID
     @Query("SELECT * FROM quotes WHERE id = :id LIMIT 1")
-    suspend fun getQuoteById(id: Int): EntityQuotes?
+    suspend fun getQuoteById(id: Long): EntityQuotes?
 
 
     // GET RADOM QUOTES

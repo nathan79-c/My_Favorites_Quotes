@@ -5,6 +5,7 @@ import com.example.myfavoritesquotes.data.local.entity.EntityQuotes
 data class QuotesModel(
     val quotes :String,
     val auteur : String,
+    val id : Long = 0
 
 )
 
@@ -14,7 +15,8 @@ object QuotesMapper {
     fun toModel(entityQuotes: EntityQuotes?): QuotesModel {
         return QuotesModel(
             quotes = entityQuotes!!.quotes,
-            auteur = entityQuotes.auteur
+            auteur = entityQuotes.auteur,
+            id = entityQuotes.id
         )
     }
 
@@ -22,7 +24,8 @@ object QuotesMapper {
     fun toEntity(quotes: QuotesModel): EntityQuotes {
         return EntityQuotes(
             quotes = quotes.quotes,
-            auteur = quotes.auteur
+            auteur = quotes.auteur,
+            id = quotes.id
         )
     }
 }

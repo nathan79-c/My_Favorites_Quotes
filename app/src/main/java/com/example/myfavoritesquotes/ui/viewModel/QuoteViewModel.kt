@@ -9,7 +9,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class QuoteViewModel(private val quotesRepository:QuotesRepository):ViewModel() {
+class QuoteViewModel(private val quotesRepository: QuotesRepository) : ViewModel()
+ {
     private  val _uiState = MutableStateFlow<QuoteUiState>(QuoteUiState.Loading)
     val uiState:StateFlow<QuoteUiState> = _uiState.asStateFlow()
 
@@ -48,7 +49,7 @@ class QuoteViewModel(private val quotesRepository:QuotesRepository):ViewModel() 
     private val _selectedQuote = MutableStateFlow<QuotesModel?>(null)
     val selectedQuote: StateFlow<QuotesModel?> = _selectedQuote.asStateFlow()
 
-    fun prepareUpdate(quoteId: Int) {
+    fun prepareUpdate(quoteId: Long) {
         viewModelScope.launch {
             _selectedQuote.value = quotesRepository.getQuoteById(quoteId)
         }

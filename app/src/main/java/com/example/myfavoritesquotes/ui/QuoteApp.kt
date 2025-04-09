@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.myfavoritesquotes.ui.navigation.Screen
 import com.example.myfavoritesquotes.ui.screen.QuotesElement
@@ -20,18 +21,25 @@ fun QuoteApp(){
         val quoteViewModel: QuoteViewModel = koinViewModel()
 
 
+
+
+
         NavHost(
             navController = navController,
             startDestination = Screen.MainScreen
         ) {
             composable<Screen.MainScreen> {
-                QuotesScreen(Modifier, quoteViewModel, onNavigateToCreate = {navController.navigate(
-                    Screen.AddScreen)})
+                QuotesScreen(Modifier, quoteViewModel, onNavigateToCreate = { /*
+                    navController.navigate(
+                        Screen.AddScreen
+                    ) */
+                })
             }
-            composable<Screen.AddScreen> {backStackEntry ->
+          /*  composable<Screen.AddScreen> {
 
-                QuotesElement(quoteViewModel.createQuote())
-            }
+                QuotesElement(onSave = { newQuote -> quoteViewModel.createQuote(newQuote) })
+                navController.popBackStack()
+            } */
         }
 
 
