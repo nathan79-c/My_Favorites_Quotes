@@ -55,22 +55,29 @@ class QuoteViewModel(private val quotesRepository: QuotesRepository) : ViewModel
         }
     }
 
-    suspend fun updateQuote(updatedQuote: QuotesModel) {
-        try {
-            quotesRepository.updateQuote(updatedQuote)
-            getAllQuotes() // Rafraîchit la liste
-        } catch (e: Exception) {
-            _uiState.value = QuoteUiState.Error("Erreur de mise à jour")
-        }
-    }
+     suspend fun updateQuote(updatedQuote: QuotesModel) {
+         _uiState.value = QuoteUiState.Saving
+         try {
+             quotesRepository.updateQuote(updatedQuote)
+             getAllQuotes()
+         } catch (e: Exception) {
+             _uiState.value = QuoteUiState.Error("Erreur de mise à jour")
+         }
+     }
 
-}
+     fun clearSelectedQuote() {
+         _selectedQuote.value = null
+     }
+
+
+ }
 
 // États possibles
 sealed class QuoteUiState {
     object Loading : QuoteUiState()
     object Creating : QuoteUiState()
-    object Empty : QuoteUiState() // Nouvel état pour données vides
+    object Saving : QuoteUiState()
+    object Empty : QuoteUiState()
     data class Success(val quotes: List<QuotesModel>) : QuoteUiState()
     data class Error(val message: String) : QuoteUiState()
 }

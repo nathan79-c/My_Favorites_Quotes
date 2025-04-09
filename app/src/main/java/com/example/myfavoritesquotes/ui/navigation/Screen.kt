@@ -11,6 +11,6 @@ sealed interface  Screen{
 
     @Serializable
     data object  AddScreen:Screen
-        fun withQuote(quote: QuotesModel)="$this/$quote"
+
 }
 

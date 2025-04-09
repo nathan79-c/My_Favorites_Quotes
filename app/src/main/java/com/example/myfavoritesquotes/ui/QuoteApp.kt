@@ -29,17 +29,18 @@ fun QuoteApp(){
             startDestination = Screen.MainScreen
         ) {
             composable<Screen.MainScreen> {
-                QuotesScreen(Modifier, quoteViewModel, onNavigateToCreate = { /*
+                QuotesScreen(Modifier, quoteViewModel, onNavigateToCreate = {
                     navController.navigate(
                         Screen.AddScreen
-                    ) */
+                    )
                 })
             }
-          /*  composable<Screen.AddScreen> {
-
-                QuotesElement(onSave = { newQuote -> quoteViewModel.createQuote(newQuote) })
-                navController.popBackStack()
-            } */
+            composable<Screen.AddScreen> {
+                QuotesElement(
+                    viewModel = quoteViewModel,
+                    navController = navController
+                )
+            }
         }
 
 

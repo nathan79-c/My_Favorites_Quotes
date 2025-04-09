@@ -170,6 +170,9 @@ dependencies {
 
     // optional - Test helpers for Lifecycle runtime
     testImplementation (libs.androidx.lifecycle.runtime.testing)
+    // lottie animation
+    implementation("com.airbnb.android:lottie-compose:6.6.4")
+
 }
 kapt {
     correctErrorTypes = true
