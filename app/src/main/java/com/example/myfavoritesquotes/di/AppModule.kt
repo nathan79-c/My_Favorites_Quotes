@@ -11,7 +11,7 @@ import org.koin.core.module.dsl.viewModelOf
 val appModule = module {
     single { QuoteDatabase.getInstance(get()) }
     single { get<QuoteDatabase>().quotesDao()} // Assurez-vous que le nom correspond exactement
-    single { QuotesRepository(get()) }
+    factory { QuotesRepository(get()) }
     viewModel { QuoteViewModel(get()) }
 
 }
