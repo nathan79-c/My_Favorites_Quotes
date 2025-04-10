@@ -17,7 +17,7 @@
 
 ### **Screenshot**
 
-![ Favorites Quotes  Screenshot](https://github.com/nathan79-c/ModernWidget/blob/master/app/src/main/res/drawable/widgetui.png
+![ Favorites Quotes  Screenshot](https://github.com/nathan79-c/My_Favorites_Quotes/blob/master/app/src/main/res/screenShoot/Screenshot_20250410-053741_My%20Favorites%20Quotes.png)
 
 ### **📥 Installation :**  
 1️⃣ Clone the repo :  
