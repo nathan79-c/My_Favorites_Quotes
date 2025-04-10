@@ -1,10 +1,7 @@
 package com.example.myfavoritesquotes.glance.wigdet
+
 import android.content.Context
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceId
@@ -27,8 +24,9 @@ class MainWidget:GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         provideContent {
             GlanceTheme {
-                var quotes= QuotesModel("Exige beaucoup de toi-même et attends peu des autres. Ainsi\n" +
-                        "beaucoup d’ennuis te seront épargnés.","Confucius")
+                var quotes= QuotesModel("La question de notre époque est la répartition adéquate des fortunes\n" +
+                        "afin que les liens de fraternité puissent continuer à maintenir ensemble\n" +
+                        "les riches et les pauvres en relations harmonieuses.","CAndrew Carnegie")
 
                 GlanceQuotesCard(quotes = quotes)
             }
