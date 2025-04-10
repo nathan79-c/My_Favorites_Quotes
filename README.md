@@ -13,7 +13,11 @@
 - **Kotlin** & **Jetpack Compose** 🛠️  
 - **ROOM** for local storage 💾  
 - **Glance API** for widget management 📱  
-- **ViewModel & StateFlow** for reactive architecture ⚡  
+- **ViewModel & StateFlow** for reactive architecture ⚡
+
+### **Screenshot**
+
+![ Favorites Quotes  Screenshot](https://github.com/nathan79-c/ModernWidget/blob/master/app/src/main/res/drawable/widgetui.png
 
 ### **📥 Installation :**  
 1️⃣ Clone the repo :  
