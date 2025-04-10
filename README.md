@@ -17,7 +17,9 @@
 
 ### **Screenshot**
 
-![ Favorites Quotes  Screenshot](https://github.com/nathan79-c/My_Favorites_Quotes/blob/master/app/src/main/res/screenShoot/Screenshot_20250410-053741_My%20Favorites%20Quotes.png)
+![Capture d'écran 1 de My Favorites Quotes](app/src/main/res/screenShoot/Screenshot_20250410-053741_My%20Favorites%20Quotes.png)
+![Capture d'écran 2 de My Favorites Quotes](app/src/main/res/screenShoot/Screenshot_20250410-053750_My%20Favorites%20Quotes.png)
+![Capture d'écran 3 de My Favorites Quotes](app/src/main/res/screenShoot/Screenshot_20250410-053801_My%20Favorites%20Quotes.png)
 
 ### **📥 Installation :**  
 1️⃣ Clone the repo :  
